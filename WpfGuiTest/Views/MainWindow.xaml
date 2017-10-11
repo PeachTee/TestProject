@@ -1,0 +1,67 @@
+﻿<controls:MetroWindow x:Class="WpfGuiTest.Views.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:local="clr-namespace:WpfGuiTest.Views"
+                      Title="MainWindow"
+                      Height="500"
+                      Width="800"
+                      BorderThickness="0"
+                      GlowBrush="Black"
+                      ResizeMode="CanResizeWithGrip"
+                      WindowTransitionsEnabled="False"
+                      WindowStartupLocation="CenterScreen">
+
+    <!-- Title Leiste -->
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Einstellungen" Click="Button_Click"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
+    <!-- Einstellung Flyout -->
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout x:Name="SettingsFlyout" Header="Einstellungen" Position="Right" Width="300">
+                <local:PageSettings/>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+
+    <!-- Fenster Bereich -->
+    <DockPanel LastChildFill="True">
+        <!-- Menübar -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Button Bereich -->
+        <WrapPanel DockPanel.Dock="Bottom">
+            <!-- Default Ressource für WrapPanel -->
+            <WrapPanel.Resources>
+                <!-- Default Buttons -->
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Height" Value="60"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Margin" Value="10,10,0,10"/>
+                </Style>
+            </WrapPanel.Resources>
+
+            <!-- Buttons -->
+            <Button Content="Anmelden" Command="{Binding TestCommand}"/>
+            <Button Content="Auftrag eingeben"/>
+            <Button Content="Abbrechen"/>
+        </WrapPanel>
+
+        <!-- Hauptbereich -->
+        <Canvas>
+            <TextBlock Text="{Binding TestModel.Message}"/>
+        </Canvas>
+    </DockPanel>
+</controls:MetroWindow>
