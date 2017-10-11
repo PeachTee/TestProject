@@ -54,14 +54,16 @@
             </WrapPanel.Resources>
 
             <!-- Buttons -->
-            <Button Content="Anmelden" Command="{Binding TestCommand}"/>
-            <Button Content="Auftrag eingeben"/>
+            <Button Content="Anmelden" Command="{Binding TestCommand1}"/>
+            <Button Content="Abmelden" Command="{Binding TestCommand2}"/>
             <Button Content="Abbrechen"/>
         </WrapPanel>
 
         <!-- Hauptbereich -->
-        <Canvas>
-            <TextBlock Text="{Binding TestModel.Message}"/>
-        </Canvas>
+        <Grid>
+            <TextBlock FontSize="20"
+                       Margin="10"
+                       Text="{Binding TestModel.Message}"/>
+        </Grid>
     </DockPanel>
 </controls:MetroWindow>
